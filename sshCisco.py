@@ -1,6 +1,7 @@
 import os
 from netmiko import ConnectHandler
 from getpass import getpass
+from netmiko.ssh_exception import AuthenticationException, SSHException, NetMikoTimeoutException
 
 USERNAME = input("Please enter your SSH username: ")
 PASS = getpass("Please enter your SSH password: ")
@@ -19,4 +20,5 @@ output = c.send_command('show run')
 f = open('backup.conf', 'x')
 
 f.write(output)
+
 f.close()
